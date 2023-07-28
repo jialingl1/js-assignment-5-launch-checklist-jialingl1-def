@@ -27,19 +27,19 @@ function validateInput(testInput) {
      
 }
 // parameters inside formSubmission: document, list, pilot, copilot, fuelLevel, cargoLevel
-function formSubmission() {
-    let launchForm = document.getElementById("launchForm");
+function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+    //let launchForm = document.getElementById("launchForm");
     launchForm.addEventListener("submit", function(event) {
-        let pilot = document.getElementById("pilotName");
-        let copilot = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoLevel = document.querySelector("input[name=cargoMass]");
+    //    let pilot = document.getElementById("pilotName");
+    //    let copilot = document.querySelector("input[name=copilotName]");
+    //    let fuelLevel = document.querySelector("input[name=fuelLevel]");
+    //    let cargoLevel = document.querySelector("input[name=cargoMass]");
 
         if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoLevel.value) === "Empty") {
             alert("All fields are required");
             event.preventDefault();    
         } 
-        if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number") {
+        if (validateInput(pilot.value) !== "Not a Number" || validateInput(copilot.value) !== "Not a Number") {
             alert("Must enter valid text for Pilot Name and Co-pilot Name");
             event.preventDefault();
         }
