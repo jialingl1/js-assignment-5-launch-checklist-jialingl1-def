@@ -17,31 +17,37 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
+    if (testInput === "") {
+        return "Empty";
+    } else if (isNaN(testInput)) {
+        return "Not a Number";
+    } else if (typeof testInput === "number") {
+        return "Is a Number";
+    }
+     
+}
+// parameters inside formSubmission: document, list, pilot, copilot, fuelLevel, cargoLevel
+function formSubmission() {
     let launchForm = document.getElementById("launchForm");
     launchForm.addEventListener("submit", function(event) {
-        let pilotName = document.getElementById("pilotName");
-        let copilotName = document.getElementById("copilotName");
-        if (pilotName.value === "" || copilotName.value === "") {
-            alert("All fields are required"); 
-        if (pilotName.value === Number || copilotName.value === Number) {
-            alert("Must enter valid text");
-        }
-            event.preventDefault();
+        let pilot = document.getElementById("pilotName");
+        let copilot = document.querySelector("input[name=copilotName]");
+        let fuelLevel = document.querySelector("input[name=fuelLevel]");
+        let cargoLevel = document.querySelector("input[name=cargoMass]");
+
+        if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoLevel.value) === "Empty") {
+            alert("All fields are required");
+            event.preventDefault();    
         } 
-        let fuelLevel = document.getElementById("fuelLevel");
-        let cargoMass = document.getElementById("cargoMass");
-        let nanValue = NaN;
-        if (fuelLevel === nanValue || cargoMass === nanValue) {
-            alert("Must enter a valid number"); 
-
+        if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number") {
+            alert("Must enter valid text for Pilot Name and Co-pilot Name");
             event.preventDefault();
         }
-
-    }); 
-}
-
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+        if (validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoLevel.value) === "Not a Number") {
+            alert("Must enter valid number for Fuel Level and Cargo Mass");
+            event.preventDefault();
+        }
+    });
 }
 
 async function myFetch() {
