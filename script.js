@@ -2,15 +2,21 @@
 
 window.addEventListener("load", function() {
     let launchForm = document.getElementById("launchForm");
-    //launchForm.addEventListener("submit", function(event) {
-        let pilot = document.getElementById("pilotName");
-        let copilot = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoLevel = document.querySelector("input[name=cargoMass]");
-
-        formSubmission(launchForm, pilot, copilot, fuelLevel, cargoLevel);
     
-    //});
+        let pilotName = document.getElementById("pilotName");
+        let copilotName = document.querySelector("input[name=copilotName]");
+        let fuelLevel = document.querySelector("input[name=fuelLevel]");
+        let cargoMass = document.querySelector("input[name=cargoMass]");
+        let faultyItems = document.getElementById("faultyItems");
+        let fuelStatus = document.getElementById("fuelStatus");
+        let launchStatus = document.getElementById("launchStatus");
+        let cargoStatus = document.getElementById("cargoStatus");
+
+                 
+
+        formSubmission(launchForm, faultyItems, pilotName, copilotName, fuelLevel, cargoMass);
+  
+    
 
     
 
